@@ -21,7 +21,7 @@ namespace SIUGames.Migrations
                     Developers = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Tags = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Rating = table.Column<double>(type: "float", nullable: false)
+                    Rating = table.Column<double>(type: "float", nullable: true)
                 },
                 constraints: table =>
                 {

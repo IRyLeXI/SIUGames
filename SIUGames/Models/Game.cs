@@ -18,6 +18,6 @@ namespace SIUGames.Models
         public string Tags { get; set; }
 
         [Range(1, 10, ErrorMessage = "The rating must be between 1 and 10.")]
-        public double Rating { get; set; }
+        public double? Rating { get; set; }
     }
 }
