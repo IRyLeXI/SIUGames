@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using SIUGames.Data;
 using SIUGames.Models;
 
@@ -7,92 +6,100 @@ namespace SIUGames.Controllers
 {
     [Route("[Controller]")]
     [ApiController]
-    public class GameController : Controller
+    public class UserController : Controller
     {
         private readonly AppDbContext _appDbContext;
 
-        public GameController(AppDbContext db) 
+        public UserController(AppDbContext db) 
         {
             _appDbContext = db;
         }
 
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(List<Game>))]
-        public IActionResult GetGames()
+        public IActionResult GetUsers()
         {
-            List<Game> games = _appDbContext.Games.ToList();
-            if(!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            return Ok(games);
-        }
-
-        [HttpGet("{id}")]
-        [ProducesResponseType(200, Type = typeof(Game))]
-        public IActionResult GetGame(int id) 
-        {
-            Game game = _appDbContext.Games.FirstOrDefault(x => x.Id == id);
+            List<User> users = _appDbContext.Users.ToList();
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            if(game == null)
+            return Ok(users);
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(200, Type = typeof(User))]
+        public IActionResult GetUser(int id)
+        {
+            User user = _appDbContext.Users.FirstOrDefault(x => x.Id == id);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (user == null)
             {
                 return NotFound("Game is not exist!");
             }
-            return Ok(game);
+
+            return Ok(user);
         }
 
         [HttpPost]
         [ProducesResponseType(400)]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
-        public IActionResult CreateGame([FromBody]Game newGame)
+        public IActionResult CreateUser([FromBody] User newUser)
         {
-            if(newGame==null)
+            if (newUser == null)
             {
                 return BadRequest(ModelState);
             }
-            if(IsGameExist(newGame))
+
+            if (IsUserExist(newUser))
             {
                 return BadRequest("This game is already exist!");
             }
-            _appDbContext.Games.Add(newGame);
+
+            _appDbContext.Users.Add(newUser);
             if (!Save())
             {
                 ModelState.AddModelError("", "Something went wrong while saving!");
                 return StatusCode(500, ModelState);
             }
-            return Ok(newGame);
+
+            return Ok(newUser);
         }
 
         [HttpPut("{id}")]
         [ProducesResponseType(400)]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
-        public IActionResult UpdateGame(int id, [FromBody]Game game)
+        public IActionResult UpdateGame(int id, [FromBody] User user)
         {
-            if (game==null)
+            if (user == null)
             {
                 return BadRequest(ModelState);
             }
-            if (!IsGameExist(game))
+
+            if (!IsUserExist(user))
             {
-                return NotFound("Game does not found!");
+                return NotFound("User does not found!");
             }
-            if (id != game.Id)
+
+            if (id != user.Id)
             {
                 return BadRequest(ModelState);
             }
-            //Game game2 = _appDbContext.Games.FirstOrDefault(x => x.Id == game.Id);
-            _appDbContext.Games.Update(game);
+
+            _appDbContext.Users.Update(user);
             if (!Save())
             {
                 ModelState.AddModelError("", "Something went wrong while updating!");
                 return StatusCode(500, ModelState);
             }
-            return Ok(game);
+
+            return Ok(user);
         }
 
         [HttpDelete("{id}")]
@@ -100,23 +107,25 @@ namespace SIUGames.Controllers
         [ProducesResponseType(200)]
         public IActionResult DeleteGame(int id)
         {
-            Game game = _appDbContext.Games.FirstOrDefault(x => x.Id == id);
-            if(!ModelState.IsValid)
+            User user = _appDbContext.Users.FirstOrDefault(x => x.Id == id);
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if(game==null)
+            if (user == null)
             {
                 return NotFound("Wafel!");
             }
-            _appDbContext.Games.Remove(game);
+
+            _appDbContext.Users.Remove(user);
             if (!Save())
             {
                 ModelState.AddModelError("", "Something went wrong while deleting!");
                 return StatusCode(500, ModelState);
             }
-            return Ok("Game deleted!");
+
+            return Ok("User deleted!");
         }
 
         private bool Save()
@@ -125,9 +134,11 @@ namespace SIUGames.Controllers
             return saved > 0;
         }
 
-        private bool IsGameExist(Game game)
+        private bool IsUserExist(User user)
         {
-            return _appDbContext.Games.Contains(game);
+            return _appDbContext.Users.Contains(user);
         }
+
+
     }
 }
