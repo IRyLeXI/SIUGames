@@ -4,7 +4,8 @@ namespace SIUGames.Models
 {
     public class Game
     {
-        public int Id { get; set; }
+        //public Guid Id { get; set; }
+        public Guid GameId { get; set; }
 
         [Required(ErrorMessage = "The game name is required.")]
         public string Name { get; set; }

@@ -4,7 +4,9 @@ namespace SIUGames.Models
 {
     public class User
     {
-        public int Id { get; set; }
+        //public Guid Id { get; set; }
+
+        public Guid UserId { get; set; }
 
         [Required(ErrorMessage = "The user name is required.")]
         [StringLength(30, MinimumLength = 2, ErrorMessage = "The customer name must be between 2 and 30 characters.")]
@@ -16,11 +18,17 @@ namespace SIUGames.Models
         [EmailAddress(ErrorMessage = "The email address is invalid.")]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "The password is required. Fill the password")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
         public string? Description { get; set; }
 
         public string PreferedTags { get; set; }
         
         public Game? FavouriteGame { get; set; }
+
+        public string? Token { get; set; }
 
     }
 }

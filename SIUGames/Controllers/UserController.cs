@@ -29,9 +29,9 @@ namespace SIUGames.Controllers
 
         [HttpGet("{id}")]
         [ProducesResponseType(200, Type = typeof(User))]
-        public IActionResult GetUser(int id)
+        public IActionResult GetUser(Guid id)
         {
-            User user = _appDbContext.Users.FirstOrDefault(x => x.Id == id);
+            User user = _appDbContext.Users.FirstOrDefault(x => x.UserId == id);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -75,19 +75,19 @@ namespace SIUGames.Controllers
         [ProducesResponseType(400)]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
-        public IActionResult UpdateGame(int id, [FromBody] User user)
+        public IActionResult UpdateGame(Guid id, [FromBody] User user)
         {
             if (user == null)
             {
                 return BadRequest(ModelState);
             }
 
-            if (!IsUserExist(user))
+            if (!IsUserExistId(id))
             {
                 return NotFound("User does not found!");
             }
 
-            if (id != user.Id)
+            if (id != user.UserId)
             {
                 return BadRequest(ModelState);
             }
@@ -105,9 +105,9 @@ namespace SIUGames.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(400)]
         [ProducesResponseType(200)]
-        public IActionResult DeleteGame(int id)
+        public IActionResult DeleteGame(Guid id)
         {
-            User user = _appDbContext.Users.FirstOrDefault(x => x.Id == id);
+            User user = _appDbContext.Users.FirstOrDefault(x => x.UserId == id);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -139,6 +139,10 @@ namespace SIUGames.Controllers
             return _appDbContext.Users.Contains(user);
         }
 
+        private bool IsUserExistId(Guid id) 
+        {
+            return _appDbContext.Users.Any(x => x.UserId == id);
+        }
 
     }
 }

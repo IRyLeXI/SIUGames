@@ -30,9 +30,9 @@ namespace SIUGames.Controllers
 
         [HttpGet("{id}")]
         [ProducesResponseType(200, Type = typeof(Game))]
-        public IActionResult GetGame(int id) 
+        public IActionResult GetGame(Guid id) 
         {
-            Game game = _appDbContext.Games.FirstOrDefault(x => x.Id == id);
+            Game game = _appDbContext.Games.FirstOrDefault(x => x.GameId == id);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -71,7 +71,7 @@ namespace SIUGames.Controllers
         [ProducesResponseType(400)]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
-        public IActionResult UpdateGame(int id, [FromBody]Game game)
+        public IActionResult UpdateGame(Guid id, [FromBody]Game game)
         {
             if (game==null)
             {
@@ -81,7 +81,7 @@ namespace SIUGames.Controllers
             {
                 return NotFound("Game does not found!");
             }
-            if (id != game.Id)
+            if (id != game.GameId)
             {
                 return BadRequest(ModelState);
             }
@@ -98,9 +98,9 @@ namespace SIUGames.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(400)]
         [ProducesResponseType(200)]
-        public IActionResult DeleteGame(int id)
+        public IActionResult DeleteGame(Guid id)
         {
-            Game game = _appDbContext.Games.FirstOrDefault(x => x.Id == id);
+            Game game = _appDbContext.Games.FirstOrDefault(x => x.GameId == id);
             if(!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
