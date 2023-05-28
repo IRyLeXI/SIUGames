@@ -1,0 +1,36 @@
+.user-header {
+    display: flex;
+    height: 400px;
+    /* border: 2px solid white;  */
+    column-gap: 1%;
+    grid-template-columns: auto 1fr;
+    background-color: rgba(31, 31, 31, 0.8);
+    padding-left: 1%;
+    border-radius: 15px;
+    padding-left: 40px;
+    padding-top: 8px;
+}
+
+.user-header>div {
+    margin-right: 0px;
+}
+
+.user-header>div:nth-child(1) {
+    flex-basis: 10%;
+   /*  border: 3px solid orange; */
+}
+
+.user-header>div:nth-child(2) {
+    flex-basis: 90%;
+    /* border: 3px solid orange;  */
+}
+
+.user-header img {
+    width: 300px;
+    height: 300px;
+    border-radius: 8px;
+    top: 15px;
+    transform: scale(0.95);
+    box-shadow: 0 5px 5px rgb(0, 0, 0);
+    /* object-fit: cover; */
+}

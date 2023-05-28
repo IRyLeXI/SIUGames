@@ -1,0 +1,50 @@
+h2 {
+    padding-top: 15px;
+    text-align: center;
+    color:  rgb(212, 212, 212);
+}
+
+.body-header
+{
+    background-color: rgba(31, 31, 31, 0.8);
+    margin-bottom: -20px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.user-favourite-games {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    background-color: rgba(31, 31, 31, 0.8);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin-top: 10px;
+}
+
+.user-favourite-games>div {
+    margin-right: -100px;
+    margin-bottom: 20px;
+    padding-left: 90px;
+    flex-grow: 1;
+    flex-basis: calc(33.33% - 25px);
+    height: 500px;
+}
+
+@media screen and (max-width: 767px) {
+    .user-favourite-games>div {
+        flex-basis: calc(100% - 50px);
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .user-favourite-games>div {
+        flex-basis: calc(50% - 25px);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .user-favourite-games>div {
+        flex-basis: calc(33.33% - 25px);
+    }
+}
