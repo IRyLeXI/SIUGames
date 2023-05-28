@@ -1,16 +1,16 @@
 import './App.css';
 import Card from './Components/Card/Card.js';
 import Game from './Components/Game/Game.js';
-
+import User from './Components/User/User.js';
 function App() {
   return (
     <div className="App" >
-      <Card 
+      {/* <Card 
       Image = "https://image.api.playstation.com/vulcan/img/rnd/202111/0822/zDXM9K2cQiq0vKTDwF0TkAor.png" 
       GameName="FIFA 2022"
       Tags = "Sport Online Football"
       GameDev = "EA Sports"
-      />
+      /> */}
       {/* <Game
         Image="https://image.api.playstation.com/vulcan/img/rnd/202111/0822/zDXM9K2cQiq0vKTDwF0TkAor.png"
         Title="FIFA 2022"
@@ -28,6 +28,11 @@ function App() {
         Tags="Sport Online Football"
         Developer="EA Sports"
       /> */}
+
+      <User 
+      Image = "https://i.scdn.co/image/ab67616100005174e1408498d7f528e3671616b1"
+      UserName = {"John Xina"}
+      Description = {"The president of the SIUGames Corporation"}/>
 
     </div>
   );

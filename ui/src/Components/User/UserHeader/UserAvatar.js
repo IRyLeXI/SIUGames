@@ -1,7 +1,7 @@
 import React from "react";
 
-const UserAvatar = () => {
-   return <img src="http://placehold.it/" />
+const UserAvatar = (props) => {
+   return <img src={props.Image} alt="Avatar"/>
 }
 
 export default UserAvatar;

@@ -1,10 +1,11 @@
 import React from "react";
+import "./UserTopInformation.css"
 
 const UserTopInformation = (props) =>{
     return (
-        <div>
-            <h1 className="user-name"> {props.UserName} </h1>
-            <p className="user-description"> {props.Description} </p>
+        <div className="user-top-information">
+            <h1> {props.UserName} </h1>
+            <p> {props.Description} </p>
         </div>
     )
 }
