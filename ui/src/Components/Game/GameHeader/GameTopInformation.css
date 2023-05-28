@@ -1,0 +1,19 @@
+.game-top-information {
+    background-color: rgba(158, 158, 158, 0.6);
+    border-radius: 15px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4); /* Додали тінь */
+}
+
+.game-title {
+    text-align: left;
+    text-shadow: rgb(71, 71, 71) 1px 0 5px;
+}
+
+.game-tags {
+    color :rgb(71, 71, 71)
+}
+
+.game-developer {
+    text-align: right;
+    padding-right: 10%;
+}
