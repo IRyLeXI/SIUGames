@@ -4,7 +4,7 @@
     /* border: 2px solid white;  */
     column-gap: 1%;
     grid-template-columns: auto 1fr;
-    background-color: rgba(31, 31, 31, 0.8);
+    background-color: rgba(0, 0, 0, 0.85);
     padding-left: 1%;
     border-radius: 15px;
     padding-left: 40px;

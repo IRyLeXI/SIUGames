@@ -1,9 +1,13 @@
 import './App.css';
 import Card from './Components/Card/Card.js';
 import Game from './Components/Game/Game.js';
+import MainPage from './Components/MainPage/MainPage.js';
 import User from './Components/User/User.js';
+import UserLogin from './Components/UserLogin/UserLogin.js';
+import UserRegister from './Components/UserRegister/UserRegister.js';
+
 function App() {
-  return (
+  return (    
     <div className="App" >
       {/* <Card 
       Image = "https://image.api.playstation.com/vulcan/img/rnd/202111/0822/zDXM9K2cQiq0vKTDwF0TkAor.png" 
@@ -29,11 +33,17 @@ function App() {
         Developer="EA Sports"
       /> */}
 
-      <User 
+      {/* <User 
       Image = "https://i.scdn.co/image/ab67616100005174e1408498d7f528e3671616b1"
       UserName = {"John Xina"}
-      Description = {"The president of the SIUGames Corporation"}/>
+      Description = {"The president of the SIUGames Corporation"}
+      /> */}
 
+      {/* <UserLogin /> */}
+
+      {/* <UserRegister /> */}
+
+      {/* <MainPage /> */}
     </div>
   );
 }

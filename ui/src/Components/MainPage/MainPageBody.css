@@ -4,25 +4,25 @@ h2 {
     color:  rgb(212, 212, 212);
 }
 
-.body-header
+.main-body-header
 {
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0.75);
     margin-bottom: -20px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    margin-top: 0px;
+    padding-top: 30px;
 }
 
-.user-favourite-games {
+.main-page-body {
     display: flex;
     flex-wrap: wrap;
     min-height: 100vh;
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0.75);
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     margin-top: 10px;
 }
 
-.user-favourite-games>div {
+.main-page-body>div {
     margin-right: -100px;
     margin-bottom: 20px;
     padding-left: 90px;
@@ -32,19 +32,19 @@ h2 {
 }
 
 @media screen and (max-width: 767px) {
-    .user-favourite-games>div {
+    .main-page-body>div {
         flex-basis: calc(100% - 50px);
     }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-    .user-favourite-games>div {
+    .main-page-body>div {
         flex-basis: calc(50% - 25px);
     }
 }
 
 @media screen and (min-width: 1024px) {
-    .user-favourite-games>div {
+    .main-page-body>div {
         flex-basis: calc(33.33% - 25px);
     }
 }

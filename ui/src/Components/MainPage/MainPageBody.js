@@ -1,13 +1,13 @@
 import React from "react";
-import Card from "../../Card/Card.js";
-import "./UserFavouriteGames.css";
+import Card from "../Card/Card.js";
+import "./MainPageBody.css";
 
-const UserFavouriteGames = (props) => {
+const MainPageBody = (props) => {
     return (<>
-        <div className="body-header">
-            <h2>Favourite Games</h2>
+        <div className="main-body-header">
+            <h2>Результати</h2>
         </div>
-    <div className="user-favourite-games">
+    <div className="main-page-body">
         <div>
             <Card
                 Image="https://image.api.playstation.com/vulcan/img/rnd/202111/0822/zDXM9K2cQiq0vKTDwF0TkAor.png"
@@ -62,4 +62,4 @@ const UserFavouriteGames = (props) => {
     //return list of cards
 }
 
-export default UserFavouriteGames;
+export default MainPageBody;
