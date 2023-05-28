@@ -2,6 +2,7 @@ import React from "react";
 import GameBody from "./GameBody/GameBody.js";
 import GameHeader from "./GameHeader/GameHeader.js";
 import "./Game.css";
+import axios from "axios";
 
 const Game = (props) => {
     return (

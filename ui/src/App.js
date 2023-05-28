@@ -1,5 +1,5 @@
 import './App.css';
-import Card from './Components/Card/Card.js';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Game from './Components/Game/Game.js';
 import MainPage from './Components/MainPage/MainPage.js';
 import User from './Components/User/User.js';
@@ -7,18 +7,14 @@ import UserLogin from './Components/UserLogin/UserLogin.js';
 import UserRegister from './Components/UserRegister/UserRegister.js';
 
 function App() {
-  return (    
-    <div className="App" >
-      {/* <Card 
-      Image = "https://image.api.playstation.com/vulcan/img/rnd/202111/0822/zDXM9K2cQiq0vKTDwF0TkAor.png" 
-      GameName="FIFA 2022"
-      Tags = "Sport Online Football"
-      GameDev = "EA Sports"
-      /> */}
-      {/* <Game
-        Image="https://image.api.playstation.com/vulcan/img/rnd/202111/0822/zDXM9K2cQiq0vKTDwF0TkAor.png"
-        Title="FIFA 2022"
-        Description="FIFA 22  - 29-а за рахунком комп'ютерна гра з серії FIFA в жанрі спортивний симулятор ( футбол ), розроблена компаніями EA Vancouver під видавництвом Electronic Arts . На ПК , PlayStation 4 , PlayStation 5 , Xbox One , Xbox Series X/S та Nintendo Switch . Гра вийшла у жовтні 2021 року. Ultimate Team 
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+          <Route path="game" element={<Game
+            Image="https://image.api.playstation.com/vulcan/img/rnd/202111/0822/zDXM9K2cQiq0vKTDwF0TkAor.png"
+            Title="FIFA 2022"
+            Description="FIFA 22  - 29-а за рахунком комп'ютерна гра з серії FIFA в жанрі спортивний симулятор ( футбол ), розроблена компаніями EA Vancouver під видавництвом Electronic Arts . На ПК , PlayStation 4 , PlayStation 5 , Xbox One , Xbox Series X/S та Nintendo Switch . Гра вийшла у жовтні 2021 року. Ultimate Team 
         FIFA 22 Ultimate Team EA включила оновлення деяких функцій ігрового режиму. Насамперед, EA представила карти FUT Heroes, і це карти, які мають унікальну хімію, специфічну для ліги, яка прив'язана до їхнього конкретного моменту героя, забезпечуючи посилання зеленого клубу для будь-якого гравця у тій самій лізі, а також звичайне посилання на країну. До повного списку карт героїв входять: Маріо Гомес , Тім Кехілл , Оле-Гуннар Сульшер , Єжи Дудек , Джо Коул , Олександр Мостовий , Давид Жинола , Іван Кордоба , Фредді Юнгберг , Юрген Колер , Ларс Рікен ,Антоніо Ді Натале , Клінт Демпсі , Абеді Пеле , Хорхе Кампос , Фернандо Морієнтес , Самі Аль-Джабер та Дієго Міліто . Гравці, що входять до складу команди тижня, отримають підвищену статистику карток гравців залежно від їхніх реальних життєвих досягнень, щоб відобразити близькість до реального футболу. У попередніх іграх було доступно 22 гравці, за якими варто спостерігати, і ще 6 додані до FIFA 22. Як і у FIFA 21 , у грі будуть значки FIFA із зображенням колишніх зірок, а у FIFA 22 буде додано більше гравців-легенд, таких як Ікер Касільяс , Робін ван Персі , Уейн Руніта Кафу . У гравців також буде можливість попередньо переглянути срібні та золоті набори гравців, як і в попередній грі, дозволяючи гравцям попередньо переглянути, що вони отримають від набору, перш ніж вирішити, чи купувати його.
         
         Режим кар'єри 
@@ -29,22 +25,16 @@ function App() {
         
         Нові ліги та кубки 
         У FIFA 22 з'явилася Індійська Ай-Ліга та чотири нові команди в Решта світі. Більше того, у грі продовжує бути неліцензована ліга Бразилії з генерованими гравцями."
-        Tags="Sport Online Football"
-        Developer="EA Sports"
-      /> */}
-
-      {/* <User 
-      Image = "https://i.scdn.co/image/ab67616100005174e1408498d7f528e3671616b1"
-      UserName = {"John Xina"}
-      Description = {"The president of the SIUGames Corporation"}
-      /> */}
-
-      {/* <UserLogin /> */}
-
-      {/* <UserRegister /> */}
-
-      {/* <MainPage /> */}
-    </div>
+            Tags="Sport Online Football"
+            Developer="EA Sports" />} />
+          <Route path="Profile" element={<User
+            Image="https://i.scdn.co/image/ab67616100005174e1408498d7f528e3671616b1"
+            UserName={"John Xina"}
+            Description={"The president of the SIUGames Corporation"} />} />
+          <Route path="Login" element={<UserLogin />} />
+          <Route path="Register" element={<UserRegister />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
