@@ -1,28 +1,49 @@
 import React from "react";
 import "./UserRegister.css";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const UserRegister = () => {
+    let navigate = useNavigate();
+
+    const [userName, setUserName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [avatar, setAvatar] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        axios
+            .post("https://localhost:7073/User", {userName, email, password, avatar})
+            .then(response => {
+                localStorage.setItem("userId", response.data.userId);
+                navigate('/Profile');
+                console.log(response.data);
+            }).catch((err) => console.log(err));
+    }
+
     return (
-        <div class="box">
+        <div className="box-register">
             <form>
-                <span class="text-center">register</span>
-                <div class="input-container">
-                    <input type="text" required />
+                <span className="text-center">register</span>
+                <div className="input-container-register">
+                    <input type="text" onChange={event => setUserName(event.target.value)} required />
                     <label>Username</label>
                 </div>
-                <div class="input-container">
-                    <input type="mail" required />
+                <div className="input-container-register">
+                    <input type="mail" onChange={event => setEmail(event.target.value)} required />
                     <label>Email</label>
                 </div>
-                <div class="input-container">
-                    <input type="password" required />
+                <div className="input-container-register">
+                    <input type="password" onChange={event => setPassword(event.target.value)} required />
                     <label>Password</label>
                 </div>
-                <div class="input-container">
-                    <input type="text" />
+                <div className="input-container-register">
+                    <input type="text" onChange={event => setAvatar(event.target.value)} />
                     <label>Avatar(URL for Image)</label>
                 </div>
-                <button type="button" class="btn">submit</button>
+                <button type="button" className="btn-register" onClick={handleSubmit}>submit</button>
             </form>
         </div>
     );

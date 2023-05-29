@@ -2,12 +2,9 @@ import React from "react";
 import { useState } from "react";
 import "./DropBox.css";
 
-let Tags = {
-    Search: "",
-    Tags: ""
-};
+let Tags = "Теги: ";
 const DropBox = () => {
-    const [tag, setTag] = useState("Теги: ")
+    const [tag, setTag] = useState("Теги: ");
     return (
         <div>
             <details className="custom-select">
@@ -63,9 +60,9 @@ function HandleClick(tags, newTag){
     {
         tags+=" #" + newTag;
     }
-    Tags.Tags = tags;
+    Tags = tags;
     return tags;
 }
 
 
-export default DropBox;
+export {DropBox, Tags};

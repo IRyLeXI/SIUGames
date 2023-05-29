@@ -1,10 +1,15 @@
 import React from "react";
 import "./MainPageHeader.css"
-import DropBox from "./DropBox.js";
+import { DropBox } from "./DropBox.js";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-
+let searchBar = "";
 const MainPageHeader = () => {
+    const [search, setSearch] = useState("");
+    useEffect(() => {
+        searchBar = search;
+    }, [search]);
     return (
         <div className="main-page-header">
             <div>
@@ -17,11 +22,11 @@ const MainPageHeader = () => {
             </div>
             
             <div className="form__group">
-                <input type="text" className="form__input" id="name" placeholder="Game" />
+                <input type="text" className="form__input" id="name" placeholder="Game" onChange={event => {setSearch(event.target.value);}}/>
             </div>
             <DropBox />
         </div>
     );
 }
 
-export default MainPageHeader;
+export {MainPageHeader, searchBar};

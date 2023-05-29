@@ -1,65 +1,45 @@
 import React from "react";
 import Card from "../../Card/Card.js";
 import "./UserFavouriteGames.css";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const UserFavouriteGames = (props) => {
+const UserFavouriteGames = () => {
+    const [data, setData] = useState(null);
+    useEffect(() => {
+        const url = `https://localhost:7073/User/UserGames/${localStorage.getItem("userId")}`;
+        const fetchData = (u) => {
+            return axios.get(u).then((res) => {
+                console.log(res.data);
+                setData(res.data);
+            });
+        };
+        fetchData(url);
+        
+    }, []);
+
     return (<>
         <div className="body-header">
             <h2>Favourite Games</h2>
         </div>
     <div className="user-favourite-games">
+        {
+        data!==null?
+        data.map(game => (
         <div>
             <Card
-                Image="https://image.api.playstation.com/vulcan/img/rnd/202111/0822/zDXM9K2cQiq0vKTDwF0TkAor.png"
-                GameName="FIFA 2022"
-                Tags="Sport Online Football"
-                GameDev="EA Sports"
+                Id = {game.gameId}
+                Image = {game.picture === null ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" : game.picture}
+                GameName = {game.name}
+                Tags = {game.tags}
+                GameDev = {game.developers === null ? "N/A" : game.developers}
             />
-        </div>
+        </div>)) : (
         <div>
-            <Card
-                Image="https://image.api.playstation.com/vulcan/img/rnd/202111/0822/zDXM9K2cQiq0vKTDwF0TkAor.png"
-                GameName="FIFA 2022"
-                Tags="Sport Online Football"
-                GameDev="EA Sports"
-            />
-        </div>
-        <div>
-            <Card
-                Image="https://image.api.playstation.com/vulcan/img/rnd/202111/0822/zDXM9K2cQiq0vKTDwF0TkAor.png"
-                GameName="FIFA 2022"
-                Tags="Sport Online Football"
-                GameDev="EA Sports"
-            />
-        </div>
-        <div>
-            <Card
-                Image="https://image.api.playstation.com/vulcan/img/rnd/202111/0822/zDXM9K2cQiq0vKTDwF0TkAor.png"
-                GameName="FIFA 2022"
-                Tags="Sport Online Football"
-                GameDev="EA Sports"
-            />
-        </div>
-        <div>
-            <Card
-                Image="https://image.api.playstation.com/vulcan/img/rnd/202111/0822/zDXM9K2cQiq0vKTDwF0TkAor.png"
-                GameName="FIFA 2022"
-                Tags="Sport Online Football"
-                GameDev="EA Sports"
-            />
-        </div>
-        <div>
-            <Card
-                Image="https://image.api.playstation.com/vulcan/img/rnd/202111/0822/zDXM9K2cQiq0vKTDwF0TkAor.png"
-                GameName="FIFA 2022"
-                Tags="Sport Online Football"
-                GameDev="EA Sports"
-            />
-        </div>
-        
+            <h1>This user does not have favourite games for now.</h1>
+        </div>)}
     </div>
     </>);
-    //return list of cards
 }
 
 export default UserFavouriteGames;
