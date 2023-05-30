@@ -3,6 +3,7 @@ import "./MainPageHeader.css"
 import { DropBox } from "./DropBox.js";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import MainPageBody from "./MainPageBody.js";
 
 let searchBar = "";
 const MainPageHeader = () => {
@@ -11,9 +12,10 @@ const MainPageHeader = () => {
         searchBar = search;
     }, [search]);
     return (
+        <>
         <div className="main-page-header">
             <div>
-            <Link to = "/" style={{ textDecoration: 'none' }}>
+            <Link to = "/SIUGames" style={{ textDecoration: 'none' }}>
                 <section className="wrapper">
                     <div className="top">SIUGames</div>
                     <div className="bottom" aria-hidden="true">SIUGames</div>
@@ -26,6 +28,10 @@ const MainPageHeader = () => {
             </div>
             <DropBox />
         </div>
+        <div>
+            <MainPageBody SearchBar = {searchBar}/>
+        </div>
+        </>
     );
 }
 

@@ -1,8 +1,8 @@
 body {
-  /* background:rgb(35, 35, 35); */
-  background: url(https://content.jdmagicbox.com/comp/thalassery/q5/9999px490.x490.190604124605.b9q5/catalogue/game-shop-bazar-thalassery-computer-game-parlours-tohbz5kfg6.jpg);
+  /* background:rgb(30, 33, 82); */
+  background: url(https://img.freepik.com/premium-photo/abstract-gradient-background-background-design_509471-38.jpg);
   background-size: cover;
-  background-position: center;
+  background-position: fixed;
   min-height: 100vh;
 }
 

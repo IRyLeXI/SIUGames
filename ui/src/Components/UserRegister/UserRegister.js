@@ -18,7 +18,9 @@ const UserRegister = () => {
             .post("https://localhost:7073/User", {userName, email, password, avatar})
             .then(response => {
                 localStorage.setItem("userId", response.data.userId);
+                localStorage.setItem("token", response.data.token);
                 navigate('/Profile');
+                window.location.reload();
                 console.log(response.data);
             }).catch((err) => console.log(err));
     }
@@ -43,7 +45,12 @@ const UserRegister = () => {
                     <input type="text" onChange={event => setAvatar(event.target.value)} />
                     <label>Avatar(URL for Image)</label>
                 </div>
-                <button type="button" className="btn-register" onClick={handleSubmit}>submit</button>
+                <div>
+                    <button type="button" className="btn-register" onClick={handleSubmit}>submit</button>
+                </div>
+                <div className="btn2">
+                    <button type="button" className="btn" onClick={() => navigate('/')}>login</button>
+                </div>
             </form>
         </div>
     );

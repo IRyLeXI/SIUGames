@@ -16,7 +16,7 @@ const DropBox = () => {
                     <input type="radio" name="item" id="item4" title="Tags"/>
                     <input type="radio" name="item" id="item5" title="Tags"/>
                 </summary>
-                <ul className="list">
+                <ul className="ul1-list">
                     <li>
                         <label onClick={() => setTag(HandleClick(tag, "Online"))}>Online</label>
                     </li>

@@ -65,3 +65,9 @@ body{
 	cursor:pointer;
 	position:relative;
 }
+
+.btn2 {
+	position: absolute;
+	margin-top: -85.5px;
+	margin-left: 120px;
+}

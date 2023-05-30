@@ -1,7 +1,6 @@
 import React from "react";
 import "./GameTopInformation.css"
 import axios from "axios";
-import { useState } from "react";
 
 const GameTopInformation = (props) =>{
 

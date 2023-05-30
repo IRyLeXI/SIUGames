@@ -14,9 +14,12 @@ const UserLogin = () => {
             .post("https://localhost:7073/UserLogin", { userName, password })
             .then(response => {
                 localStorage.setItem("userId", response.data.userId);
-                navigate('/');
+                localStorage.setItem("token", response.data.token);
+                navigate('/SIUGames');
+                window.location.reload();
                 console.log(response.data);
             }).catch((err) => console.log(err));
+
     }
 
     return (
@@ -31,7 +34,12 @@ const UserLogin = () => {
                     <input type="password" onChange={event => setPassword(event.target.value)} required />
                     <label>Password</label>
                 </div>
-                <button type="button" className="btn" onClick={handleSubmit}>submit</button>
+                <div>
+                    <button type="button" className="btn" onClick={handleSubmit}>submit</button>
+                </div>
+                <div className="btn2">
+                    <button type="button" className="btn" onClick={() => navigate('/Register')}>register</button>
+                </div>
             </form>
         </div>
     );

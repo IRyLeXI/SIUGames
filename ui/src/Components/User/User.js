@@ -21,7 +21,7 @@ const User = () =>{
         data!==null?(
         <div className='user'>
             <div>
-                <UserHeader Image = {data.avatar} UserName = {data.userName} Description = {data.Description} />
+                <UserHeader Image = {data.avatar} UserName = {data.userName} Description = {data.description} />
             </div>
             <div>
                 <UserFavouriteGames />

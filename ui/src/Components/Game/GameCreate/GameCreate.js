@@ -19,7 +19,7 @@ const CreateGame = () => {
         axios
             .post("https://localhost:7073/Game", {Name: name, tags: tags, description: description, picture: picture, developers: developers, trailer: trailer})
             .then(response => {
-                navigate('/');
+                navigate('/SIUGames');
                 console.log(response.data);
             }).catch((err) => console.log(err));
     }

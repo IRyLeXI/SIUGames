@@ -68,24 +68,6 @@ summary:focus {
 details[open] summary:after {
 	transform: rotate(-45deg) translate(0%, 0%);
 }
-
-ul {
-    width: 500px;
-    background: rgb(110, 110, 110, 0.9);
-    position: absolute;
-    top: calc(100% + 1.5rem);
-    left: 0;
-    padding: 1rem;
-    margin: 0;
-    box-sizing: border-box;
-    border-radius: 14px;
-    max-height: 200px;
-    overflow-y: auto;
-    list-style-type: none;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Set 4 equal-width columns */
-    grid-gap: 10px; /* Adjust the gap between cells as needed */
-  }
   
 
   li {
@@ -126,7 +108,22 @@ input[type=radio]:after {
 	font-size: 1rem;
 }
 
-ul.list {
+.ul1-list {
+	width: 500px;
+    background: rgb(110, 110, 110, 0.9);
+    position: absolute;
+    top: calc(100% + 1.5rem);
+    left: 0;
+    padding: 1rem;
+    margin: 0;
+    box-sizing: border-box;
+    border-radius: 14px;
+    max-height: 200px;
+    overflow-y: auto;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Set 4 equal-width columns */
+    grid-gap: 10px; /* Adjust the gap between cells as needed */
 	counter-reset: labels;
 }
 
@@ -145,3 +142,20 @@ label span {
 	border: 1px solid #727272;
 	border-radius: 3px;
 }
+
+::-webkit-scrollbar {
+	width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+	background: white;
+	box-shadow: inset 0 0 5px grey;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+	background: grey;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+	background: #5A5A5A;
+  }

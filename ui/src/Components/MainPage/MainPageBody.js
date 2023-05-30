@@ -3,25 +3,27 @@ import { useState, useEffect } from "react";
 import Card from "../Card/Card.js";
 import "./MainPageBody.css";
 import axios from "axios";
-import { searchBar } from "./MainPageHeader.js";
-import { Tags } from "./DropBox.js";
 
 
-const MainPageBody = () => {   
+const MainPageBody = (props) => {   
     const [data, setData] = useState(null);
-    console.log(searchBar, Tags);
-    const t1="Minecraft";
-    const t2="abeme";
+    let search = {
+        words: "m",
+        tags: "Теги: #Offline"
+    };
+    
     useEffect(() => {
-        const url = "https://localhost:7073/Game";
+        const url = "https://localhost:7073/Search";
         const fetchData = async (u) => {
-            return await axios.get(u).then((res) => {
+            return await axios.get(u, {
+                params: search
+            }).then((res) => {
                 setData(res.data);
             });
         };
         fetchData(url);
         
-    }, [Tags, searchBar]);
+    }, []);
 
     return (
     <>

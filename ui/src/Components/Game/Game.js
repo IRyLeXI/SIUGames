@@ -24,7 +24,7 @@ const Game = () => {
     return (
         data!==null?
         (<div className="game-page">
-            <GameHeader Title = {data.name} Image = {data.picture} Developer = {data.developers} Tags = {data.tags} Rating = {data.rating} Trailer = {data.gameTrailer}/>
+            <GameHeader Title = {data.name} Image = {data.picture} Developer = {data.developers} Tags = {data.tags} Rating = {data.rating} Trailer = {data.trailer}/>
             <GameBody Description = {data.description} />
         </div>) : (
             <h1>NO INFO</h1>
