@@ -12,7 +12,7 @@ namespace SIUGames.Models
         [StringLength(30, MinimumLength = 2, ErrorMessage = "The customer name must be between 2 and 30 characters.")]
         public string UserName { get; set; }
 
-        public byte[]? Avatar { get; set; }
+        public string? Avatar { get; set; }
 
         [Required(ErrorMessage = "The email address is required.")]
         [EmailAddress(ErrorMessage = "The email address is invalid.")]
@@ -24,9 +24,9 @@ namespace SIUGames.Models
 
         public string? Description { get; set; }
 
-        public string PreferedTags { get; set; }
+        public string? PreferedTags { get; set; }
         
-        public Game? FavouriteGame { get; set; }
+        /*public ICollection<Game>? FavouriteGames { get; set; }*/
 
         public string? Token { get; set; }
 

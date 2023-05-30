@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SIUGames.Data;
 
@@ -11,9 +12,11 @@ using SIUGames.Data;
 namespace SIUGames.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230529095032_UdpateMigration2")]
+    partial class UdpateMigration2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,21 @@ namespace SIUGames.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("GameUser", b =>
+                {
+                    b.Property<Guid>("FavouriteGamesGameId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UsersUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("FavouriteGamesGameId", "UsersUserId");
+
+                    b.HasIndex("UsersUserId");
+
+                    b.ToTable("GameUser");
+                });
 
             modelBuilder.Entity("SIUGames.Models.Game", b =>
                 {
@@ -48,29 +66,9 @@ namespace SIUGames.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Trailer")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("GameId");
 
                     b.ToTable("Games");
-                });
-
-            modelBuilder.Entity("SIUGames.Models.GameUser", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("FavouriteGameId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("GameUser");
                 });
 
             modelBuilder.Entity("SIUGames.Models.User", b =>
@@ -94,6 +92,7 @@ namespace SIUGames.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PreferedTags")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Token")
@@ -107,6 +106,21 @@ namespace SIUGames.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("GameUser", b =>
+                {
+                    b.HasOne("SIUGames.Models.Game", null)
+                        .WithMany()
+                        .HasForeignKey("FavouriteGamesGameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SIUGames.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UsersUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -14,5 +14,6 @@ namespace SIUGames.Data
 
         public DbSet<Game> Games { get; set; }
 
+        public DbSet<GameUser> GameUsers { get; set; }
     }
 }

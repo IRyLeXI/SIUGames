@@ -64,12 +64,24 @@ namespace SIUGames.Controllers
         private User Authenticate(UserLogin userLogin)
         {
             User currentUser = null;
-
-            User userName = _appDbContext.Users.FirstOrDefault(user => user.UserName == userLogin.UserName);
+            User userName;
+            bool isEmail = false;
+            if (userLogin.UserName.Contains("@")) 
+            {
+                userName = _appDbContext.Users.FirstOrDefault(user => user.Email == userLogin.UserName);
+                isEmail = true;
+            }
+            else
+            {
+                userName = _appDbContext.Users.FirstOrDefault(user => user.UserName == userLogin.UserName);
+            }
 
             if (userName == null)
             {
-                throw new Exception("Incorrect UserName");
+                if(!isEmail)
+                    throw new Exception("Incorrect UserName");
+                else
+                    throw new Exception("Incorrect Email");
             }
             else
             {

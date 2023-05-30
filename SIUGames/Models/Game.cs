@@ -10,7 +10,9 @@ namespace SIUGames.Models
         [Required(ErrorMessage = "The game name is required.")]
         public string Name { get; set; }
 
-        public byte[]? Picture { get; set; }
+        public string? Picture { get; set; }
+
+        public string? Trailer { get; set; }
 
         public string? Developers { get; set; }
 
@@ -20,5 +22,7 @@ namespace SIUGames.Models
 
         [Range(1, 10, ErrorMessage = "The rating must be between 1 and 10.")]
         public double? Rating { get; set; }
+
+        /*public ICollection<User>? Users { get; set; }*/
     }
 }

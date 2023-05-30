@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SIUGames.Data;
 
@@ -11,9 +12,11 @@ using SIUGames.Data;
 namespace SIUGames.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230529140027_FixesDb")]
+    partial class FixesDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,6 +37,9 @@ namespace SIUGames.Migrations
                     b.Property<string>("Developers")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("GameTrailer")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -48,9 +54,6 @@ namespace SIUGames.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Trailer")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("GameId");
 
                     b.ToTable("Games");
@@ -58,17 +61,14 @@ namespace SIUGames.Migrations
 
             modelBuilder.Entity("SIUGames.Models.GameUser", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("FavouriteGameId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ID");
+                    b.HasKey("UserId");
 
                     b.ToTable("GameUser");
                 });
